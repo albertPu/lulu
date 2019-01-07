@@ -3,6 +3,7 @@ package tt.cc.com.ttmvvm.ui.adapter.reclcerview;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.MutableLiveData;
 import android.databinding.BindingAdapter;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import org.jetbrains.annotations.Nullable;
@@ -51,27 +52,24 @@ public class MultiRecyclerViewAdapter {
             if (items == null) return;
             if (lifecycleOwner == null) return;
             if (data == null) return;
-            if (data.getValue() == null) return;
-            if (data.getValue().size() <= 0) return;
-            if (data.getValue().get(0) instanceof IMultiItemEntity) {
-                MultiRecAdapter adapter = new MultiRecAdapter(data.getValue(), items, convertListener);
-                if (listener != null) {
-                    adapter.setOnItemClickListener(listener);
-                }
-                if (childClickListener != null) {
-                    adapter.setOnItemChildClickListener(childClickListener);
-                }
-                recyclerView.setLayoutManager(layoutManager);
-                recyclerView.setAdapter(adapter);
-                data.observe(lifecycleOwner, ts -> adapter.setNewData(ts));
-            } else {
-                try {
-                    throw new IllegalArgumentException("RecyclerView data must instanceof IMultiItemEntity");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            MultiRecAdapter adapter = new MultiRecAdapter(data.getValue(), items, convertListener);
+            if (listener != null) {
+                adapter.setOnItemClickListener(listener);
             }
+            if (childClickListener != null) {
+                adapter.setOnItemChildClickListener(childClickListener);
+            }
+            if (layoutManager == null && recyclerView.getLayoutManager() == null) {
+                layoutManager = new LinearLayoutManager(recyclerView.getContext());
+            }
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapter);
+            data.observe(lifecycleOwner, ts -> adapter.setNewData(ts));
 
+        } else {
+            if (lifecycleOwner == null && recyclerView.getAdapter() instanceof BaseQuickAdapter) {
+                ((BaseQuickAdapter) recyclerView.getAdapter()).setNewData(data.getValue());
+            }
         }
     }
 
@@ -104,6 +102,7 @@ public class MultiRecyclerViewAdapter {
                 convertListener.onConvert(helper, item);
             } else {
                 helper.getDataViewBinding().setVariable(BR.item, item);
+                helper.getDataViewBinding().executePendingBindings();
             }
         }
     }

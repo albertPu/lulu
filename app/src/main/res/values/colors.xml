@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#e63751</color>
+    <color name="colorPrimaryDark">#e63751</color>
     <color name="colorAccent">#D81B60</color>
     <color name="normol_text">#555555</color>
     <color name="select_color_red">#D81B60</color>
@@ -12,4 +12,11 @@
     <color name="color_lighter_gray">#ddd</color>
     <color name="color_darker_gray">#aaa</color>
     <color name="item_bg">#44000000</color>
+    <color name="dark">#333333</color>
+    <color name="main_colore">#e63751</color>
+    <color name="color_333333">#333333</color>
+    <color name="app_d2d2d2">#d2d2d2</color>
+    <color name="color_fffdd2">#fffdd2</color>
+    <drawable name="main_colore">#e63751</drawable>
+    <drawable name="color_333333">#333333</drawable>
 </resources>

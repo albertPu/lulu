@@ -1,7 +1,7 @@
 package tt.cc.com.ttmvvm.ui.main.mine
 
-import android.arch.lifecycle.ViewModel
+import tt.cc.com.ttmvvm.ui.base.BaseViewModel
 
-class MineViewModel : ViewModel() {
+class MineViewModel : BaseViewModel() {
 
 }

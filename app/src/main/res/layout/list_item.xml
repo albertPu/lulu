@@ -5,7 +5,7 @@
 
         <variable
                 name="item"
-                type="tt.cc.com.ttmvvm.ui.main.dif.DifDean"/>
+                type="tt.cc.com.ttmvvm.ui.main.fenlei.DifDean"/>
 
     </data>
 

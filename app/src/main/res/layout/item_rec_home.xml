@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+                name="item"
+                type="tt.cc.com.ttmvvm.model.page.MovieVo"/>
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 android:layout_width="match_parent"
+                                                 android:paddingLeft="10dp"
+                                                 android:paddingRight="10dp"
+                                                 android:paddingTop="5dp"
+                                                 android:paddingBottom="5dp"
+                                                 android:layout_height="120dp">
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                bindCornerImageUrl="@{item.coverImageUrl}"
+                bindCornerSize="10"
+                />
+    </android.support.constraint.ConstraintLayout>
+</layout>

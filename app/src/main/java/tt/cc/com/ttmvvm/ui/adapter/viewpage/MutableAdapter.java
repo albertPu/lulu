@@ -5,6 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.databinding.*;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.SupportActivity;
@@ -22,32 +23,36 @@ import java.util.List;
 public class MutableAdapter<T> extends PagerAdapter {
 
 
-    @BindingAdapter({"pageItems", "bindLifecycleOwner"})
-    public static <T> void bindPageAdapter(ViewPager viewPager, LiveData<ArrayList<MuPagerItem<T>>> data, LifecycleOwner owner) {
+    @BindingAdapter({"bindLayouts", "bindLifecycleOwner"})
+    public static <T> void bindPageAdapter(ViewPager viewPager, LiveData<ArrayList<PageBind>> layouts, LifecycleOwner owner) {
         if (viewPager.getAdapter() == null) {
-            final MutableAdapter adapter = new MutableAdapter(data, viewPager.getContext());
+            final MutableAdapter adapter = new MutableAdapter(layouts.getValue(), viewPager.getContext(), owner);
+            layouts.observe(owner, pageBinds -> adapter.setNewData(pageBinds));
             viewPager.setAdapter(adapter);
-            data.observe(owner, new Observer<ArrayList<MuPagerItem<T>>>() {
-                @Override
-                public void onChanged(@Nullable ArrayList<MuPagerItem<T>> muPagerItems) {
-                    adapter.notifyDataSetChanged();
-                }
-            });
         }
     }
 
 
-    private LiveData<List<MuPagerItem<T>>> mDatas;
     private Context context;
+    private ArrayList<PageBind> layouts;
+    private LifecycleOwner owner;
 
-    private MutableAdapter(LiveData<List<MuPagerItem<T>>> datas, Context context) {
-        mDatas = datas;
+
+    private MutableAdapter(ArrayList<PageBind> layouts, Context context, LifecycleOwner owner) {
         this.context = context;
+        this.layouts = layouts;
+        this.owner = owner;
+    }
+
+    public void setNewData(ArrayList<PageBind> layouts) {
+        this.layouts = layouts;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return mDatas == null ? 0 : mDatas.getValue().size();
+        if (layouts != null) return layouts.size();
+        return 0;
     }
 
     @Override
@@ -58,17 +63,24 @@ public class MutableAdapter<T> extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-
-        View view = DataBindingUtil.inflate(LayoutInflater.from(context), mDatas.getValue().get(position).getRes(), container, false).getRoot();
+        View view = DataBindingUtil.inflate(LayoutInflater.from(context), layouts.get(position).getLayout(), container, false).getRoot();
         ViewDataBinding bind = DataBindingUtil.bind(view);
-        Object data = mDatas.getValue().get(position).getData();
-        if (data instanceof LiveData) {
-            bind.setVariable(BR.item, ((LiveData) data).getValue());
-        } else {
-            bind.setVariable(BR.item, data);
+        if (bind != null) {
+            bind.setLifecycleOwner(owner);
+            Object data = null;
+            if (layouts != null) {
+                data = layouts.get(position).getBindData();
+            }
+            if (data instanceof LiveData) {
+                bind.setVariable(BR.item, ((LiveData) data).getValue());
+            } else {
+                bind.setVariable(BR.item, data);
+            }
+            bind.executePendingBindings();
+            container.addView(view);
+            return view;
         }
-        container.addView(view);
-        return view;
+        return super.instantiateItem(container, position);
     }
 
     @Override

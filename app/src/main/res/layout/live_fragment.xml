@@ -1,17 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
                 name="viewModel"
-                type="tt.cc.com.ttmvvm.ui.main.live.LiveViewModel"/>
+                type="tt.cc.com.ttmvvm.ui.main.huancun.HuanCunViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                  android:layout_width="match_parent"
                                                  android:layout_height="match_parent">
 
+        <include layout="@layout/custom_toolbar_dark"/>
+
+        <RelativeLayout
+                app:layout_constraintTop_toBottomOf="@id/custom_toolbar_root"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="0dp">
+
+            <TextView
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:background="#ededed"
+                    android:textColor="#656565"
+                    android:text="剩余缓存次数:0"
+                    />
+
+            <LinearLayout
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/download_img_null"/>
+
+                <TextView
+                        android:textSize="12sp"
+                        android:text="缓存视频到本地"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#666666"/>
+
+                <TextView
+                        android:layout_marginTop="20dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingLeft="10dp"
+                        android:textSize="12sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="查看更多影片"
+                        android:textColor="@color/white"
+                        android:background="@drawable/huan_cun_see_bg"/>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
     </android.support.constraint.ConstraintLayout>
 
 </layout>

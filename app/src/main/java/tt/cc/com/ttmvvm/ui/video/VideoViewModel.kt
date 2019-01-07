@@ -27,26 +27,11 @@ class VideoViewModel : BaseViewModel(), LifecycleObserver {
     var movieVos = MutableLiveData<ArrayList<IMultiItemEntity>>().apply { value = movieData }
 
     var items = ArrayList<ItemLayout>().apply {
-        add(ItemLayout().apply {
-            type = 0
-            layout = R.layout.item_video_detail_info
-        })
-        add(ItemLayout().apply {
-            type = 1
-            layout = R.layout.item_two_rec
-        })
-        add(ItemLayout().apply {
-            type = 2
-            layout = R.layout.item_video_small_card
-        })
-        add(ItemLayout().apply {
-            type = 3
-            layout = R.layout.item_three_rc
-        })
-        add(ItemLayout().apply {
-            type = 4
-            layout = R.layout.item_discuss
-        })
+        add(ItemLayout(R.layout.item_video_detail_info, 0))
+        add(ItemLayout(R.layout.item_two_rec, 1))
+        add(ItemLayout(R.layout.item_video_small_card, 2))
+        add(ItemLayout(R.layout.item_three_rc, 3))
+        add(ItemLayout(R.layout.item_discuss, 4))
     }
 
     var layoutManager = LinearLayoutManager(TtApplication.context)
@@ -66,7 +51,7 @@ class VideoViewModel : BaseViewModel(), LifecycleObserver {
                 movieData.clear()
                 movieData.addAll(data)
                 movieData.addAll(discuss)
-                movieVos.value=movieData
+                movieVos.value = movieData
 
             }, {})
     }

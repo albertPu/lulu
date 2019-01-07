@@ -25,7 +25,7 @@ interface Api {
     fun getBanner(): Observable<Response<List<BannerVo>>>
 
     @POST("api/page/movies")
-    fun getMovies(@Query("page") page: Int): Observable<Response<List<MovieVo>>>
+    fun getMovies(@Query("page") page: Int): Observable<Response<ArrayList<MovieVo>>>
 
     @POST("api/page/moviesMore")
     fun getMoviesMore(@Query("page") page: Int, @Query("id") id: String): Observable<Response<DetailVo>>

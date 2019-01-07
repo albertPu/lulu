@@ -29,134 +29,92 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
         <LinearLayout
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:background="#fafafa"
                 android:id="@+id/bottom_switch"
                 app:layout_constraintTop_toBottomOf="@id/home_container"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            <LinearLayout
-                    android:layout_marginTop="5dp"
-                    android:background="@color/white"
-                    android:elevation="5dp"
+            <RadioGroup
+                    bindGroupSelect="@{viewModel.bindGroupSelect}"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp">
+                    android:layout_height="wrap_content">
 
-                <LinearLayout
-                        android:id="@+id/bottom_home"
-                        android:onClick="@{viewModel::onClick}"
-                        android:gravity="center"
-                        android:orientation="vertical"
+                <RadioButton
+                        android:id="@+id/rtn_home"
+                        android:gravity="center_horizontal"
+                        android:button="@null"
+                        android:drawableTop="@drawable/home_selector"
+                        android:textColor="@drawable/selector_rtn"
+                        android:onCheckedChanged="@{(buttonView,isChecked)->viewModel.onCheckedChanged(buttonView,isChecked)}"
+                        style="@style/tab_button_style"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:textSize="10sp"
+                        android:text="首页"
+                        android:layout_height="wrap_content"/>
 
-                    <ImageView
-                            android:src="@{viewModel.homeBottomIcon}"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"/>
-
-                    <TextView
-                            android:textColor="@{viewModel.homeBottomColor}"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/bottom_home"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:onClick="@{viewModel::onClick}"
-                        android:id="@+id/bottom_vip"
-                        android:gravity="center"
-                        android:orientation="vertical"
+                <RadioButton
+                        android:id="@+id/rtn_guo_chan"
+                        android:textSize="10sp"
+                        android:gravity="center_horizontal"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:onCheckedChanged="@{(buttonView,isChecked)->viewModel.onCheckedChanged(buttonView,isChecked)}"
+                        android:drawableTop="@drawable/guo_chan_selector"
+                        android:text="国产"
+                        style="@style/tab_button_style"
+                        android:textColor="@drawable/selector_rtn"
+                        android:layout_height="wrap_content"/>
 
-                    <ImageView
-                            android:src="@{viewModel.vipBottomIcon}"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"/>
-
-                    <TextView
-                            android:textColor="@{viewModel.vipBottomColor}"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/bottom_vip"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:onClick="@{viewModel::onClick}"
-                        android:id="@+id/bottom_dif"
-                        android:gravity="center"
-                        android:orientation="vertical"
+                <RadioButton
+                        android:id="@+id/rtn_fen_lei"
+                        android:textSize="12sp"
+                        android:text="分类"
+                        android:gravity="center_horizontal"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:onCheckedChanged="@{(buttonView,isChecked)->viewModel.onCheckedChanged(buttonView,isChecked)}"
+                        style="@style/tab_button_style"
+                        android:textColor="@drawable/selector_rtn"
+                        android:drawableTop="@drawable/fen_lei_selector"
+                        android:layout_height="wrap_content"/>
 
-                    <ImageView
-                            android:src="@{viewModel.diffBottomIcon}"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"/>
-
-                    <TextView
-                            android:textColor="@{viewModel.diffBottomColor}"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/bottom_idf"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:onClick="@{viewModel::onClick}"
-                        android:id="@+id/bottom_live"
-                        android:gravity="center"
-                        android:orientation="vertical"
+                <RadioButton
+                        android:id="@+id/rtn_huan_cun"
+                        android:textSize="10sp"
+                        android:text="缓存"
+                        android:gravity="center_horizontal"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:onCheckedChanged="@{(buttonView,isChecked)->viewModel.onCheckedChanged(buttonView,isChecked)}"
+                        android:button="@null"
+                        style="@style/tab_button_style"
+                        android:textColor="@drawable/selector_rtn"
+                        android:drawableTop="@drawable/huan_cun_selector"
+                        android:layout_height="wrap_content"/>
 
-                    <ImageView
-                            android:src="@{viewModel.livePlaBottomIcon}"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"/>
-
-                    <TextView
-                            android:textColor="@{viewModel.livePlaBottomColor}"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/bottom_live"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:onClick="@{viewModel::onClick}"
-                        android:id="@+id/bottom_min"
-                        android:gravity="center"
-                        android:orientation="vertical"
+                <RadioButton
+                        android:id="@+id/rtn_me"
+                        android:textSize="10sp"
+                        android:text="我"
+                        android:onCheckedChanged="@{(buttonView,isChecked)->viewModel.onCheckedChanged(buttonView,isChecked)}"
+                        android:gravity="center_horizontal"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:button="@null"
+                        style="@style/tab_button_style"
+                        android:textColor="@drawable/selector_rtn"
+                        android:drawableTop="@drawable/me_selector"
+                        android:layout_height="wrap_content"/>
+            </RadioGroup>
 
-                    <ImageView
-                            android:src="@{viewModel.minBottomIcon}"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"/>
-
-                    <TextView
-                            android:textColor="@{viewModel.minBottomColor}"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/bottom_min"/>
-
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
 
 
