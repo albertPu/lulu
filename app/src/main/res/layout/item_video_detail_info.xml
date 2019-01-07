@@ -65,7 +65,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:visibility="gone"
-                        android:src="@mipmap/ic_action_down_white"/>
+                        />
 
             </RelativeLayout>
 
@@ -93,7 +93,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:drawablePadding="10dp"
-                        android:drawableStart="@mipmap/ic_action_favorites"
                         android:gravity="center_vertical"
                         android:textColor="@color/color_lighter_gray"
                         android:text="@{item.discussNumber}"/>

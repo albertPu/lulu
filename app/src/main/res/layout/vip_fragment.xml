@@ -5,39 +5,46 @@
 
         <variable
                 name="viewModel"
-                type="tt.cc.com.ttmvvm.ui.main.vip.VipViewModel"/>
+                type="tt.cc.com.ttmvvm.ui.main.guochan.GuoChanViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                  android:layout_width="match_parent"
                                                  android:layout_height="match_parent">
 
-        <RelativeLayout
-                app:layout_constraintTop_toTopOf="parent"
-                android:id="@+id/rl_toolbar"
-                android:background="@color/main_red"
-                android:layout_width="match_parent"
-                android:layout_height="66dp">
+        <include layout="@layout/custom_toolbar_dark"/>
 
-            <TextView
-                    android:paddingTop="10dp"
-                    android:layout_centerInParent="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="会员区"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:textColor="@color/white"/>
-        </RelativeLayout>
-
-        <android.support.v7.widget.RecyclerView
-                app:layout_constraintTop_toBottomOf="@id/rl_toolbar"
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                app:layout_constraintTop_toBottomOf="@id/custom_toolbar_root"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_width="match_parent"
+                app:srlPrimaryColor="@color/colorPrimary"
+                bindRefresh="@{viewModel.bindRefresh}"
+                bindRefreshListener="@{viewModel.bindRefreshListener}"
+                bindLoadMoreListener="@{viewModel.bindLoadingMoreListener}"
                 android:layout_height="0dp">
 
-        </android.support.v7.widget.RecyclerView>
+            <com.scwang.smartrefresh.header.MaterialHeader
+                    bindMainColor="@{viewModel.bindMainColor}"
+                    android:id="@+id/header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <android.support.v7.widget.RecyclerView
+                    bindItemType="@{viewModel.bindItem}"
+                    bindData="@{viewModel.bindRecData}"
+                    bindLifecycleOwner="@{viewModel.lifecycleOwner.get()}"
+                    bindLayoutManager="@{viewModel.layoutManager}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
     </android.support.constraint.ConstraintLayout>
 </layout>
