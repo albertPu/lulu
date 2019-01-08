@@ -34,8 +34,11 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
         super.onActivityCreated(savedInstanceState)
         bind?.setLifecycleOwner(this)
         initViewModel(bind)
-        EventBus.getDefault().register(this)
+    }
 
+    override fun onResume() {
+        super.onResume()
+        EventBus.getDefault().register(this)
     }
 
     fun initTitle(title: String) {
@@ -58,6 +61,10 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
 
     }
 
+    override fun onPause() {
+        super.onPause()
+        EventBus.getDefault().unregister(this)
+    }
 
     abstract fun getContentView(): Int
 
@@ -68,7 +75,7 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        EventBus.getDefault().unregister(this)
+
     }
 
     open fun onBackPressed() {

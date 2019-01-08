@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:startDestination="@+id/main_home">
+    <fragment
+            android:name="tt.cc.com.ttmvvm.ui.main.MainFragment"
+            android:id="@+id/main_home"
+            />
+    <fragment
+            android:name="tt.cc.com.ttmvvm.ui.main.mine.seehistory.SeeHistoryFragment"
+            android:id="@+id/see_history"
+            />
+    <fragment
+            android:name="tt.cc.com.ttmvvm.ui.main.mine.collect.CollectFragment"
+            android:id="@+id/collect"
+            />
+    <fragment
+            android:name="tt.cc.com.ttmvvm.ui.main.mine.connect.ConnectFragment"
+            android:id="@+id/connect"
+            />
+
+    <fragment
+            android:name="tt.cc.com.ttmvvm.ui.main.mine.aboutus.AboutUsFragment"
+            android:id="@+id/about_us"
+            />
+    <fragment
+            android:name="tt.cc.com.ttmvvm.ui.main.mine.setting.SettingFragment"
+            android:id="@+id/setting"
+            />
+</navigation>

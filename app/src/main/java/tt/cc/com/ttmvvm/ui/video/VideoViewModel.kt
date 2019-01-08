@@ -2,23 +2,24 @@ package tt.cc.com.ttmvvm.ui.video
 
 import android.annotation.SuppressLint
 import android.arch.lifecycle.LifecycleObserver
+import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.MutableLiveData
 import android.support.v7.widget.LinearLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
 import tt.cc.com.ttmvvm.R
 import tt.cc.com.ttmvvm.TtApplication
-import tt.cc.com.ttmvvm.model.page.DetailVo
-import tt.cc.com.ttmvvm.net.Api
-import tt.cc.com.ttmvvm.net.ApiStore
-import tt.cc.com.ttmvvm.net.ResponseTransformer
-import tt.cc.com.ttmvvm.ui.adapter.reclcerview.IMultiItemEntity
-import tt.cc.com.ttmvvm.ui.adapter.reclcerview.ItemLayout
-import tt.cc.com.ttmvvm.ui.base.BaseViewModel
+import tt.cc.com.ttmvvm.mvvm.net.Api
+import tt.cc.com.ttmvvm.mvvm.net.ApiStore
+import tt.cc.com.ttmvvm.mvvm.net.ResponseTransformer
+import tt.cc.com.ttmvvm.mvvm.adapter.reclcerview.IMultiItemEntity
+import tt.cc.com.ttmvvm.mvvm.adapter.reclcerview.ItemLayout
+import tt.cc.com.ttmvvm.mvvm.ui.BaseViewModel
+import java.lang.ref.WeakReference
 
 /**
  *created by Albert
  */
-class VideoViewModel : BaseViewModel(), LifecycleObserver {
+class VideoViewModel(lifecycleOwner: WeakReference<LifecycleOwner>) : BaseViewModel(lifecycleOwner), LifecycleObserver {
 
     var imgUrl = MutableLiveData<String>()
 

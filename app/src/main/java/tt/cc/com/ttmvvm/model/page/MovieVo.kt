@@ -1,8 +1,8 @@
 package tt.cc.com.ttmvvm.model.page
 
 import tt.cc.com.ttmvvm.R
-import tt.cc.com.ttmvvm.ui.adapter.reclcerview.IMultiItemEntity
-import tt.cc.com.ttmvvm.utlis.getColor
+import tt.cc.com.ttmvvm.mvvm.adapter.reclcerview.IMultiItemEntity
+import tt.cc.com.ttmvvm.utlis.ResUtils
 
 class MovieVo : IMultiItemEntity {
     var mPosition = 0
@@ -10,13 +10,12 @@ class MovieVo : IMultiItemEntity {
     override fun getClickViewIds(): ArrayList<Int>? = ArrayList<Int>().apply {
         add(R.id.tv_movie_name)
     }
+
     override fun setPosition(position: Int) {
         this.mPosition = position
     }
 
     override fun getItemType(): Int = 0
-
-
 
 
     var id = ""
@@ -31,8 +30,8 @@ class MovieVo : IMultiItemEntity {
 
     var color: Int = 0
         get() = if (mPosition % 2 == 0) {
-            getColor(R.color.main_red)!!
+            ResUtils.getColor(R.color.main_red)!!
         } else {
-            getColor(R.color.white)!!
+            ResUtils.getColor(R.color.white)!!
         }
 }

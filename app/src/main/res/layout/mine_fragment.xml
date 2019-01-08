@@ -156,6 +156,8 @@
             </LinearLayout>
 
             <RelativeLayout
+                    android:id="@+id/rl_see_history"
+                    android:onClick="@{v->viewModel.onClick(v)}"
                     android:layout_width="match_parent"
                     android:layout_height="45dp">
 
@@ -187,6 +189,8 @@
             </RelativeLayout>
 
             <RelativeLayout
+                    android:id="@+id/rl_collect"
+                    android:onClick="@{v->viewModel.onClick(v)}"
                     android:layout_width="match_parent"
                     android:layout_height="45dp">
 
@@ -218,6 +222,8 @@
             </RelativeLayout>
 
             <RelativeLayout
+                    android:id="@+id/rl_connect_service"
+                    android:onClick="@{v->viewModel.onClick(v)}"
                     android:layout_width="match_parent"
                     android:layout_height="45dp">
 
@@ -249,6 +255,8 @@
             </RelativeLayout>
 
             <RelativeLayout
+                    android:id="@+id/rl_about_us"
+                    android:onClick="@{v->viewModel.onClick(v)}"
                     android:layout_width="match_parent"
                     android:layout_height="45dp">
 
@@ -280,6 +288,8 @@
             </RelativeLayout>
 
             <RelativeLayout
+                    android:id="@+id/rl_setting"
+                    android:onClick="@{v->viewModel.onClick(v)}"
                     android:layout_width="match_parent"
                     android:layout_height="45dp">
 

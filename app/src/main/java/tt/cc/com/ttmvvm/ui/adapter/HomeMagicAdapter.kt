@@ -3,7 +3,6 @@ package tt.cc.com.ttmvvm.ui.adapter
 import android.content.Context
 import android.graphics.Color
 import android.support.v4.view.ViewPager
-import android.view.View
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView

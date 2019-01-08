@@ -7,6 +7,7 @@ import net.lucode.hackware.magicindicator.ViewPagerHelper
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator
 import tt.cc.com.ttmvvm.R
 import tt.cc.com.ttmvvm.databinding.DifFragmentBinding
+import tt.cc.com.ttmvvm.mvvm.ui.ViewModelFactory
 import tt.cc.com.ttmvvm.ui.adapter.HomeMagicAdapter
 import tt.cc.com.ttmvvm.ui.base.BaseFragment
 import java.lang.ref.WeakReference
@@ -17,8 +18,7 @@ class FenLeiFragment : BaseFragment<DifFragmentBinding>() {
     override fun getContentView() = R.layout.dif_fragment
 
     override fun initViewModel(binding: DifFragmentBinding?) {
-        binding?.viewModel = ViewModelProviders.of(this).get(FenLeiViewModel::class.java)
-        binding?.viewModel?.lifecycleOwner = WeakReference(this)
+        binding?.viewModel = ViewModelProviders.of(activity!!, ViewModelFactory(this)).get(FenLeiViewModel::class.java)
         binding?.setLifecycleOwner(this)
         iniTableLayout()
     }

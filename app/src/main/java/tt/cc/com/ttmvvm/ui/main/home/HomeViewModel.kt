@@ -1,32 +1,22 @@
 package tt.cc.com.ttmvvm.ui.main.home
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.arch.lifecycle.*
-import android.content.Intent
-import android.support.v4.app.ActivityCompat
-import android.support.v4.app.ActivityOptionsCompat
-import android.support.v4.util.Pair
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
-import android.widget.TextView
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
+import tt.cc.com.ttmvvm.mvvm.getSF
 import io.reactivex.rxkotlin.subscribeBy
 import tt.cc.com.ttmvvm.R
 import tt.cc.com.ttmvvm.TtApplication
-import tt.cc.com.ttmvvm.net.Api
-import tt.cc.com.ttmvvm.net.ApiStore
-import tt.cc.com.ttmvvm.net.ResponseTransformer
-import tt.cc.com.ttmvvm.ui.adapter.viewpage.PageBind
-import tt.cc.com.ttmvvm.ui.base.BaseViewModel
-import tt.cc.com.ttmvvm.ui.video.VideoActivity
-import tt.cc.com.ttmvvm.ui.video.VideoFragment
-import tt.cc.com.ttmvvm.utlis.getSF
-import tt.cc.com.ttmvvm.utlis.showToast
+import tt.cc.com.ttmvvm.mvvm.net.Api
+import tt.cc.com.ttmvvm.mvvm.net.ApiStore
+import tt.cc.com.ttmvvm.mvvm.net.ResponseTransformer
+import tt.cc.com.ttmvvm.mvvm.adapter.viewpage.PageBind
+import tt.cc.com.ttmvvm.mvvm.ui.BaseViewModel
+import java.lang.ref.WeakReference
 
-class HomeViewModel : BaseViewModel(), LifecycleObserver {
+class HomeViewModel(lifecycleOwner: WeakReference<LifecycleOwner>) : BaseViewModel(lifecycleOwner), LifecycleObserver {
 
     var title = ArrayList<String>().apply {
         add("推荐")
@@ -54,26 +44,20 @@ class HomeViewModel : BaseViewModel(), LifecycleObserver {
     }
 
 
-    @SuppressLint("CheckResult")
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    fun onCreate() {
+    init {
         bindPageItems.value = ArrayList<PageBind>().apply {
-            add(PageBind(R.layout.view_page_home_one, HomePageViewModel().apply {
-                lifecycleOwner = this@HomeViewModel.lifecycleOwner
+            add(PageBind(R.layout.view_page_home_one, initViewModel(lifecycleOwner.get(), HomePageViewModel::class.java).apply {
                 tag.value = title.getSF(0)
             }))
-            add(PageBind(R.layout.view_page_home_one, HomePageViewModel().apply {
-                lifecycleOwner = this@HomeViewModel.lifecycleOwner
+            add(PageBind(R.layout.view_page_home_one, initViewModel(lifecycleOwner.get(), HomePageViewModel::class.java).apply {
                 tag.value = title.getSF(1)
             }))
-            add(PageBind(R.layout.view_page_home_one, HomePageViewModel().apply {
-                lifecycleOwner = this@HomeViewModel.lifecycleOwner
+            add(PageBind(R.layout.view_page_home_one, initViewModel(lifecycleOwner.get(), HomePageViewModel::class.java).apply {
                 tag.value = title.getSF(2)
             }))
         }
         pageListener.onPageSelected(0)
     }
-
 
     var layoutManager = GridLayoutManager(TtApplication.context, 2).apply {
         spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
@@ -85,8 +69,8 @@ class HomeViewModel : BaseViewModel(), LifecycleObserver {
 
 
     @SuppressLint("CheckResult")
-    fun onClick(view: View) {
-        showToast("点击了")
+    override fun onClick(view: View) {
+
     }
 
     @SuppressLint("CheckResult")

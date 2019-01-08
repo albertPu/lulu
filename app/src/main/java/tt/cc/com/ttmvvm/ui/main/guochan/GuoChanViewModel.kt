@@ -8,14 +8,15 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import tt.cc.com.ttmvvm.R
 import tt.cc.com.ttmvvm.TtApplication
 import tt.cc.com.ttmvvm.model.page.MovieVo
-import tt.cc.com.ttmvvm.net.Api
-import tt.cc.com.ttmvvm.net.ApiStore
-import tt.cc.com.ttmvvm.net.ResponseTransformer
-import tt.cc.com.ttmvvm.ui.adapter.reclcerview.ItemLayout
-import tt.cc.com.ttmvvm.ui.base.BaseViewModel
+import tt.cc.com.ttmvvm.mvvm.net.Api
+import tt.cc.com.ttmvvm.mvvm.net.ApiStore
+import tt.cc.com.ttmvvm.mvvm.net.ResponseTransformer
+import tt.cc.com.ttmvvm.mvvm.adapter.reclcerview.ItemLayout
+import tt.cc.com.ttmvvm.mvvm.ui.BaseViewModel
 import tt.cc.com.ttmvvm.utlis.ResUtils
+import java.lang.ref.WeakReference
 
-class GuoChanViewModel : BaseViewModel(), LifecycleObserver {
+class GuoChanViewModel(lifecycleOwner: WeakReference<LifecycleOwner>) : BaseViewModel(lifecycleOwner), LifecycleObserver {
 
     val bindItem = ArrayList<ItemLayout>().apply { add(ItemLayout(R.layout.item_rec_guo_chan, 0)) }
     val bindRecData = MutableLiveData<ArrayList<MovieVo>>()
@@ -31,13 +32,14 @@ class GuoChanViewModel : BaseViewModel(), LifecycleObserver {
     }
 
 
-    var layoutManager = GridLayoutManager(TtApplication.context, 3).apply {
-        spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-            override fun getSpanSize(p0: Int): Int {
-                return 1
+    var layoutManager: GridLayoutManager? = null
+        get() = GridLayoutManager(TtApplication.context, 3).apply {
+            spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(p0: Int): Int {
+                    return 1
+                }
             }
         }
-    }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate() {

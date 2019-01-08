@@ -1,6 +1,6 @@
 package tt.cc.com.ttmvvm.model.page
 
-import tt.cc.com.ttmvvm.ui.adapter.reclcerview.IMultiItemEntity
+import tt.cc.com.ttmvvm.mvvm.adapter.reclcerview.IMultiItemEntity
 
 
 class DiscussVo : IMultiItemEntity {

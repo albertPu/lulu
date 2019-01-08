@@ -48,10 +48,15 @@ public class CustomToolbar extends Toolbar {
     private ImageView iv_title_right;
     private RelativeLayout rlToolbar;
 
+    public ImageView getIv_title_left() {
+        return iv_title_left;
+    }
+
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
         rlToolbar = findViewById(R.id.rl_toolbar);
+
         mTvMainTitleLeft = (TextView) findViewById(R.id.tv_title_left);
         mTvMainTitle = (TextView) findViewById(R.id.tv_title);
         mTvMainTitleRight = (TextView) findViewById(R.id.tv_title_right);
@@ -303,4 +308,5 @@ public class CustomToolbar extends Toolbar {
         iv_title_right.setVisibility(VISIBLE);
         iv_title_right.setBackground(rightIconDrawable);
     }
+
 }
