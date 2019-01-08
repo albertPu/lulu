@@ -57,6 +57,22 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
         customToolbar?.setRightIconDrawable(ResUtils.getDrawable(drawableRes))
     }
 
+    fun initTitle(title: String) {
+        customToolbar?.setMainTitle(title)
+    }
+
+    fun initTitle(title: String, textSize: Int) {
+        customToolbar?.setMainTitle(title)
+    }
+
+    fun showBarLine() {
+        customToolbar?.showBarLine()
+    }
+
+    fun setRightDrawable(@DrawableRes drawableRes: Int) {
+        customToolbar?.setRightIconDrawable(ResUtils.getDrawable(drawableRes))
+    }
+
     open fun initViewModel(binding: T?) {
 
     }
