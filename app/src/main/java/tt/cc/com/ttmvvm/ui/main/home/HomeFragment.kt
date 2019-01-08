@@ -2,17 +2,16 @@ package tt.cc.com.ttmvvm.ui.main.home
 
 import android.arch.lifecycle.ViewModelProviders
 import android.graphics.Color
-import kotlinx.android.synthetic.main.home_fragment.*
+import kotlinx.android.synthetic.main.dif_fragment.*
 import net.lucode.hackware.magicindicator.ViewPagerHelper
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator
 import tt.cc.com.ttmvvm.R
 import tt.cc.com.ttmvvm.databinding.HomeFragmentBinding
+import tt.cc.com.ttmvvm.mvvm.ui.BaseMvvmFragment
 import tt.cc.com.ttmvvm.mvvm.ui.ViewModelFactory
 import tt.cc.com.ttmvvm.ui.adapter.HomeMagicAdapter
-import tt.cc.com.ttmvvm.ui.base.BaseFragment
-import java.lang.ref.WeakReference
 
-class HomeFragment : BaseFragment<HomeFragmentBinding>() {
+class HomeFragment : BaseMvvmFragment<HomeFragmentBinding>() {
 
 
     override fun getContentView() = R.layout.home_fragment

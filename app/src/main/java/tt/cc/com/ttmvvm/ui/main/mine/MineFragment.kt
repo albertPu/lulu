@@ -3,11 +3,11 @@ package tt.cc.com.ttmvvm.ui.main.mine
 import android.arch.lifecycle.ViewModelProviders
 import tt.cc.com.ttmvvm.R
 import tt.cc.com.ttmvvm.databinding.MineFragmentBinding
+import tt.cc.com.ttmvvm.mvvm.ui.BaseMvvmFragment
 import tt.cc.com.ttmvvm.mvvm.ui.ViewModelFactory
-import tt.cc.com.ttmvvm.ui.base.BaseFragment
 import java.lang.ref.WeakReference
 
-class MineFragment : BaseFragment<MineFragmentBinding>() {
+class MineFragment : BaseMvvmFragment<MineFragmentBinding>() {
 
     override fun getContentView() = R.layout.mine_fragment
 

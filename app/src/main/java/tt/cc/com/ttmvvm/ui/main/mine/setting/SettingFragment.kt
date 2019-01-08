@@ -5,6 +5,7 @@ import tt.cc.com.ttmvvm.R
 import tt.cc.com.ttmvvm.databinding.FrgmentSettingBinding
 import tt.cc.com.ttmvvm.mvvm.ui.BaseMvvmFragment
 import tt.cc.com.ttmvvm.mvvm.ui.ViewModelFactory
+import tt.cc.com.ttmvvm.ui.main.mine.tuiguang.TuiGuangViewModel
 
 /**
  * created by Albert

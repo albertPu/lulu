@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="13dp"
-                android:drawableLeft="@mipmap/icon_back"
+                android:drawableLeft="@mipmap/icon_back_1"
                 android:drawablePadding="4dp"
                 android:gravity="center"
                 android:includeFontPadding="false"

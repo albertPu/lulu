@@ -9,17 +9,16 @@ import com.bumptech.glide.Glide
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer
-import kotlinx.android.synthetic.main.video_fragment.*
 import tt.cc.com.ttmvvm.R
 import tt.cc.com.ttmvvm.databinding.VideoFragmentBinding
 import tt.cc.com.ttmvvm.model.page.MovieVo
+import tt.cc.com.ttmvvm.mvvm.ui.BaseMvvmFragment
 import tt.cc.com.ttmvvm.mvvm.ui.ViewModelFactory
-import tt.cc.com.ttmvvm.ui.base.BaseFragment
 import tt.cc.com.ttmvvm.view.CleanLeakUtils
 import tt.cc.com.ttmvvm.view.VideoListener
 import java.lang.ref.WeakReference
 
-class VideoFragment : BaseFragment<VideoFragmentBinding>() {
+class VideoFragment : BaseMvvmFragment<VideoFragmentBinding>() {
 
     companion object {
         const val IMG_TRANSITION = "IMG_TRANSITION"
@@ -38,8 +37,10 @@ class VideoFragment : BaseFragment<VideoFragmentBinding>() {
 
     private var isTransition: Boolean = false
 
-    private var transition: Transition? = null
 
+    val mVideoView: StandardGSYVideoPlayer by lazy {
+        bind?.root?.findViewById<StandardGSYVideoPlayer>(R.id.mVideoView)!!
+    }
 
     override fun getContentView() = R.layout.video_fragment
 

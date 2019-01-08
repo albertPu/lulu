@@ -1,6 +1,5 @@
 package tt.cc.com.ttmvvm.mvvm.ui
 
-import android.app.Activity
 import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
@@ -9,7 +8,6 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.SupportActivity
 import android.view.View
-import tt.cc.com.ttmvvm.ui.base.BaseFragment
 import java.lang.ref.WeakReference
 
 /**
@@ -17,7 +15,7 @@ import java.lang.ref.WeakReference
  */
 open class BaseViewModel(var lifecycleOwner: WeakReference<LifecycleOwner>) : ViewModel() {
 
-    var fragment: WeakReference<BaseFragment<*>>? = if (lifecycleOwner.get() is BaseFragment<*>) WeakReference(lifecycleOwner.get() as BaseFragment<*>) else null
+    var fragment: WeakReference<BaseMvvmFragment<*>>? = if (lifecycleOwner.get() is BaseMvvmFragment<*>) WeakReference(lifecycleOwner.get() as BaseMvvmFragment<*>) else null
     var activity: WeakReference<FragmentActivity>? = if (lifecycleOwner.get() is SupportActivity) WeakReference(lifecycleOwner.get() as FragmentActivity) else null
     val action = MutableLiveData<Action>()
 

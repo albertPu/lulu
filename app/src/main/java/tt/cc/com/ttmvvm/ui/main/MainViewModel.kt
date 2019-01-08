@@ -4,11 +4,10 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import android.view.View
 import android.widget.CompoundButton
 import tt.cc.com.ttmvvm.R
 import tt.cc.com.ttmvvm.mvvm.getSF
-import tt.cc.com.ttmvvm.ui.base.BaseFragment
+import tt.cc.com.ttmvvm.mvvm.ui.BaseMvvmFragment
 import tt.cc.com.ttmvvm.ui.main.fenlei.FenLeiFragment
 import tt.cc.com.ttmvvm.ui.main.home.HomeFragment
 import tt.cc.com.ttmvvm.ui.main.huancun.HuanCunFragment
@@ -72,7 +71,7 @@ class MainViewModel : ViewModel() {
                     ?.show(mTargetFragment)
                     ?.commit()
             }
-            currentFragment = mTargetFragment as BaseFragment<*>
+            currentFragment = mTargetFragment as BaseMvvmFragment<*>
         }
 
     }

@@ -2,8 +2,8 @@ package tt.cc.com.ttmvvm.ui.video
 
 import android.os.Bundle
 import tt.cc.com.ttmvvm.R
+import tt.cc.com.ttmvvm.mvvm.ui.BaseMvvmFragment
 import tt.cc.com.ttmvvm.ui.base.BaseActivity
-import tt.cc.com.ttmvvm.ui.base.BaseFragment
 
 /**
  *created by Albert
@@ -24,7 +24,7 @@ class VideoActivity : BaseActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         this.supportFragmentManager.fragments.forEach {
-            (it as? BaseFragment<*>)?.onBackPressed()
+            (it as? BaseMvvmFragment<*>)?.onBackPressed()
         }
     }
 

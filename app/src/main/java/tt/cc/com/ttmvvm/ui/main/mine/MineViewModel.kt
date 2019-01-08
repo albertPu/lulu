@@ -16,6 +16,8 @@ class MineViewModel(lifecycleOwner: WeakReference<LifecycleOwner>) : BaseViewMod
             R.id.rl_connect_service -> showFragment(v, R.id.container, R.id.connect, true)
             R.id.rl_about_us -> showFragment(v, R.id.container, R.id.about_us, true)
             R.id.rl_setting -> showFragment(v, R.id.container, R.id.setting, true)
+            R.id.rl_vip -> showFragment(v, R.id.container, R.id.vip, true)
+            R.id.rl_tui_guang -> showFragment(v, R.id.container, R.id.tui_guang, true)
         }
     }
 

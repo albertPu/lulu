@@ -27,4 +27,12 @@
             android:name="tt.cc.com.ttmvvm.ui.main.mine.setting.SettingFragment"
             android:id="@+id/setting"
             />
+    <fragment
+            android:name="tt.cc.com.ttmvvm.ui.main.mine.vip.VipFragment"
+            android:id="@+id/vip"
+            />
+    <fragment
+            android:name="tt.cc.com.ttmvvm.ui.main.mine.tuiguang.TuiGuangFragment"
+            android:id="@+id/tui_guang"
+            />
 </navigation>

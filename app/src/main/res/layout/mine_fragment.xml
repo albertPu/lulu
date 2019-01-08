@@ -69,6 +69,8 @@
                     android:layout_height="wrap_content">
 
                 <RelativeLayout
+                        android:id="@+id/rl_vip"
+                        android:onClick="@{v->viewModel.onClick(v)}"
                         android:background="@mipmap/me_vip_bg"
                         android:layout_weight="1"
                         android:layout_width="0dp"
@@ -112,6 +114,8 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                        android:id="@+id/rl_tui_guang"
+                        android:onClick="@{v->viewModel.onClick(v)}"
                         android:background="@mipmap/me_vip_share"
                         android:layout_weight="1"
                         android:layout_width="0dp"
