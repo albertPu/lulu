@@ -17,6 +17,9 @@
     <color name="color_333333">#333333</color>
     <color name="app_d2d2d2">#d2d2d2</color>
     <color name="color_fffdd2">#fffdd2</color>
+    <color name="fff0d4">#fff0d4</color>
+    <color name="ed7b47">#ed7b47</color>
+    <color name="dcdcdc">#dcdcdc</color>
     <drawable name="main_colore">#e63751</drawable>
     <drawable name="color_333333">#333333</drawable>
 </resources>
